@@ -1,16 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager gm = null;
+
+    PlayerController player;
+
+    private void Awake()
     {
-        
+        // setup reference to game manager
+        if (gm == null)
+            gm = this.GetComponent<GameManager>();
+
+        DontDestroyOnLoad(this); 
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        player = FindObjectOfType<PlayerController>(); 
+    }
+
     void Update()
     {
         if(UIManager.UIMgr.slider.value == 0)
@@ -18,4 +30,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("You Lost");
         }
     }
+
+    #region Khalid 
+    public void Lose()
+    {
+        Debug.Log("You Lost");
+    }
+
+    public void UpdateSLiderValue(float health)
+    {
+        UIManager.UIMgr.slider.value = health;
+    }
+    #endregion
 }
