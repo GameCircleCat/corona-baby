@@ -14,8 +14,7 @@ public class UIManager : MonoBehaviour
     [Header("GameObjects")]
     public Transform Player;
     public Transform Hospital;
-
-
+    public GameObject UIGamePaused;
     Color orange = new Color(1f, 0.64f, 0f);
 
     void Start()

@@ -25,9 +25,18 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(UIManager.UIMgr.slider.value == 0)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("You Lost");
+            if (Time.timeScale > 0f)
+            {
+                UIManager.UIMgr.UIGamePaused.SetActive(true); // this brings up the pause UI
+                Time.timeScale = 0f; // this pauses the game action
+            }
+            else
+            {
+                Time.timeScale = 1f; // this unpauses the game action (ie. back to normal)
+                UIManager.UIMgr.UIGamePaused.SetActive(false); // remove the pause UI
+            }
         }
     }
 
