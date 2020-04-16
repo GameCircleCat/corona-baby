@@ -128,10 +128,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 476624412}
     m_Modifications:
+    - target: {fileID: 445802662985131817, guid: ad36c73aa9a61cd498f534a2adff1e30,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4755516613417168208, guid: ad36c73aa9a61cd498f534a2adff1e30,
         type: 3}
       propertyPath: m_Name
       value: Settings Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755516613417168208, guid: ad36c73aa9a61cd498f534a2adff1e30,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4755516614628683612, guid: ad36c73aa9a61cd498f534a2adff1e30,
         type: 3}
@@ -661,6 +671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pause Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440646732394290003, guid: 4038b6dc387da6f41a1f7868e5cc37a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5440646733610081936, guid: 4038b6dc387da6f41a1f7868e5cc37a8,
         type: 3}
