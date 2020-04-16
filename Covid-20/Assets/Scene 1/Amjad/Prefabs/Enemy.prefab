@@ -124,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028f08320d19d4d459ce3d6a7e79bc7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   patrolTime: 15
   aggroRange: 10
   waypoints:

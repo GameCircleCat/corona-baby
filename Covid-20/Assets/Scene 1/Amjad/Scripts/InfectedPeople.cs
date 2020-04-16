@@ -19,7 +19,7 @@ public class InfectedPeople : MonoBehaviour
 
     private void Awake()
     {
-        // transform.position = new Vector3(Random.Range(-43 , 43), 0, Random.Range(20 , 100));
+        //transform.position = new Vector3(Random.Range(-19 , 19), 0, Random.Range(-2 , 70)); // to randomise the position of the object in the start of the game.
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         if (agent != null) { agentSpeed = agent.speed; }

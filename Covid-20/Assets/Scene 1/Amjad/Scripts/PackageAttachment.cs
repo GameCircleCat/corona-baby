@@ -12,6 +12,7 @@ public class PackageAttachment : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             this.transform.parent = null;
+            //this.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
@@ -21,12 +22,14 @@ public class PackageAttachment : MonoBehaviour
         {
             this.transform.parent = player;
             this.transform.position = Holder.position;
+            //this.GetComponent<Rigidbody>().isKinematic = true;
             Debug.Log("Collided");
         }
 
         else if(collision.transform.tag == "Infected")
         {
             this.transform.parent = null;
+            //this.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 }
