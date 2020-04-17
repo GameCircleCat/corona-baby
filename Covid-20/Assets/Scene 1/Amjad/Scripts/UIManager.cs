@@ -36,23 +36,25 @@ public class UIManager : MonoBehaviour
     {
         var sliderFill = slider.value;
 
+        
+
         // controlling Health bar color 
-        if (sliderFill > .75)
+        if (sliderFill > 75)
         {
             fill.color = Color.green;
         }
 
-        else if (sliderFill > .5f && sliderFill < .75)
+        else if (sliderFill > 50 && sliderFill < 75)
         {
             fill.color = Color.Lerp(Color.green, Color.yellow, 1);
         }
 
-        else if (sliderFill > .25f && sliderFill < .5f)
+        else if (sliderFill > 25 && sliderFill < 50)
         {
             fill.color = Color.Lerp(Color.yellow, orange, 1);
         }
 
-        else if (sliderFill < .25)
+        else if (sliderFill < 25)
         {
             fill.color = Color.Lerp(orange, Color.red, 1);
         }
@@ -60,20 +62,20 @@ public class UIManager : MonoBehaviour
         // Display the distance and completed missions
         if (!PackageAttachment.PgAttachment.GotAttached)
         {
-            Distance.text = "Distance: " + Vector3.Distance(package.position, Player.position).ToString() + "m";
+            Distance.text = "Distance: " + Mathf.Ceil( Vector3.Distance(package.position, Player.position)).ToString() + "m";
             //Distance.text = "Distance: " + Mathf.Ceil((package.position.z - Player.position.z)).ToString() + "m";
         }
 
         else
         {
-            Distance.text = "Distance: " + Vector3.Distance(Hospital.position, Player.position).ToString() + "m";
+            Distance.text = "Distance: " + Mathf.Ceil( Vector3.Distance(Hospital.position, Player.position)).ToString() + "m";
             //Distance.text = "Distance: " + Mathf.Ceil((Hospital.position.z - Player.position.z)).ToString() + "m";
-        }
 
-        if (Mathf.Ceil((Hospital.position.z - Player.position.z)) == 0)
-        {
-            UIManager.UIMgr.SecondMissionDoneUI.SetActive(true);
-            // go to the next scene
+            if (Mathf.Ceil(Vector3.Distance(Hospital.position, Player.position)) < 5 && PackageAttachment.PgAttachment.stillAttached == true)
+            {
+                UIManager.UIMgr.SecondMissionDoneUI.SetActive(true);
+                // go to the next scene
+            }
         }
 
 

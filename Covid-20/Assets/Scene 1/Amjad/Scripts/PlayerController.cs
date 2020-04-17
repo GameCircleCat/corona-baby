@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-//        infection = infectionRateIncrease - infectionRateDecrease; 
+       //infection = infectionRateIncrease - infectionRateDecrease; 
         m_RigidBody = GetComponent<Rigidbody>();
     }
 
