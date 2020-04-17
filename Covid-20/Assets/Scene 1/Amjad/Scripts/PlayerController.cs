@@ -47,7 +47,9 @@ public class PlayerController : MonoBehaviour
 
         Mov.z = Input.GetAxis("Vertical") * movementSpeed;
 
-        transform.Translate(Mov * Time.deltaTime);
+        transform.Translate(Mov * Time.deltaTime , Space.World);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation , Quaternion.LookRotation(Mov) , .15f);
     }
 
     private void OnTriggerStay(Collider other)

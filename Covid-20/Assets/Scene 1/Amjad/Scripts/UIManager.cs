@@ -10,45 +10,76 @@ public class UIManager : MonoBehaviour
     public Slider slider;
     public Image fill;
     public Text Distance;
+    public GameObject FirstMissionDoneUI;
+    public GameObject SecondMissionDoneUI;
+    public GameObject UI_PopUp;
+
+    Color orange = new Color(1f, 0.64f, 0f);
 
     [Header("GameObjects")]
     public Transform Player;
     public Transform Hospital;
+    public Transform package;
     public GameObject UIGamePaused;
-    Color orange = new Color(1f, 0.64f, 0f);
 
     void Start()
     {
-        if(!UIMgr)
+        if (!UIMgr)
         {
             UIMgr = this;
         }
+
+        Invoke("PopUp", 2);
     }
 
     void Update()
     {
         var sliderFill = slider.value;
 
-        if(sliderFill > .75)
+        // controlling Health bar color 
+        if (sliderFill > .75)
         {
             fill.color = Color.green;
         }
 
-        else if(sliderFill > .5f && sliderFill < .75)
+        else if (sliderFill > .5f && sliderFill < .75)
         {
             fill.color = Color.Lerp(Color.green, Color.yellow, 1);
         }
 
-        else if(sliderFill > .25f && sliderFill < .5f)
+        else if (sliderFill > .25f && sliderFill < .5f)
         {
-            fill.color = Color.Lerp(Color.yellow, orange , 1);
+            fill.color = Color.Lerp(Color.yellow, orange, 1);
         }
 
-        else if(sliderFill < .25)
+        else if (sliderFill < .25)
         {
             fill.color = Color.Lerp(orange, Color.red, 1);
         }
 
-        Distance.text = "Distance: " + Mathf.Ceil((Hospital.position.z - Player.position.z) * 10).ToString() + "m";
+        // Display the distance and completed missions
+        if (!PackageAttachment.PgAttachment.GotAttached)
+        {
+            Distance.text = "Distance: " + Mathf.Ceil((package.position.z - Player.position.z)).ToString() + "m";
+        }
+
+        else
+        {
+            Distance.text = "Distance: " + Mathf.Ceil((Hospital.position.z - Player.position.z)).ToString() + "m";
+        }
+
+        if(Mathf.Ceil((Hospital.position.z - Player.position.z)) == 0)
+        {
+            UIManager.UIMgr.SecondMissionDoneUI.SetActive(true);
+            // go to the next scene
+        }
+
+
     }
+
+    private void PopUp()
+    {
+        UI_PopUp.SetActive(true);
+    }
+
 }
