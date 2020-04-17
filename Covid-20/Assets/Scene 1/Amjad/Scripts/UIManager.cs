@@ -60,15 +60,17 @@ public class UIManager : MonoBehaviour
         // Display the distance and completed missions
         if (!PackageAttachment.PgAttachment.GotAttached)
         {
-            Distance.text = "Distance: " + Mathf.Ceil((package.position.z - Player.position.z)).ToString() + "m";
+            Distance.text = "Distance: " + Vector3.Distance(package.position, Player.position).ToString() + "m";
+            //Distance.text = "Distance: " + Mathf.Ceil((package.position.z - Player.position.z)).ToString() + "m";
         }
 
         else
         {
-            Distance.text = "Distance: " + Mathf.Ceil((Hospital.position.z - Player.position.z)).ToString() + "m";
+            Distance.text = "Distance: " + Vector3.Distance(Hospital.position, Player.position).ToString() + "m";
+            //Distance.text = "Distance: " + Mathf.Ceil((Hospital.position.z - Player.position.z)).ToString() + "m";
         }
 
-        if(Mathf.Ceil((Hospital.position.z - Player.position.z)) == 0)
+        if (Mathf.Ceil((Hospital.position.z - Player.position.z)) == 0)
         {
             UIManager.UIMgr.SecondMissionDoneUI.SetActive(true);
             // go to the next scene
