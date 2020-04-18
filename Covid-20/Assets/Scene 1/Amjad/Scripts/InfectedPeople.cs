@@ -37,8 +37,8 @@ public class InfectedPeople : MonoBehaviour
 
     void Update()
     {
-        if(animator)
-            animator.SetFloat("Speed", agent.velocity.magnitude);
+        //if(animator)
+        //    animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 
     void Patrol()
