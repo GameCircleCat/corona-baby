@@ -7,7 +7,7 @@ public class InfectedPeople : MonoBehaviour
     public float patrolTime = 15;
     public float aggroRange = 10;
     public Transform[] waypoints;
-    [SerializeField] int m_NumOfPOints = 3;
+    [SerializeField] int m_NumOfPoints = 3;
 
     int index;
     float speed, agentSpeed;
@@ -25,12 +25,12 @@ public class InfectedPeople : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         if (agent != null) { agentSpeed = agent.speed; }
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        index = Random.Range(0, waypoints.Length);
+        //index = Random.Range(0, waypoints.Length);
         movementSpeed = Random.Range(15, 18);
 
         InvokeRepeating("Tick", 0, 0.5f);
 
-        Shuffle(waypoints);
+        //Shuffle(waypoints);
 
         if (waypoints.Length > 0)
         {
@@ -59,7 +59,9 @@ public class InfectedPeople : MonoBehaviour
 
     void Patrol()
     {
-        index = index == m_NumOfPOints - 1 ? 0 : index + 1;
+        //System.Random rng = new System.Random();
+        index = Random.Range(0, waypoints.Length);
+        //index = index == m_NumOfPoints - 1 ? 0 : index + 1;
     }
 
     void Tick()
