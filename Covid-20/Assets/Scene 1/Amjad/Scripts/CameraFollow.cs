@@ -18,6 +18,7 @@ public class CameraFollow : MonoBehaviour
     {
         // transform.position = new Vector3(Mathf.Clamp(player.transform.position.x, LeftClamp, RightClamp) + offset.x, Mathf.Clamp(player.transform.position.y, DownClamp, TopClamp) + offset.y, offset.z);
 
-        transform.position = new Vector3(player.position.x + offset.x,  offset.y, player.position.z + offset.z);
+
+        transform.position = new Vector3(player.position.x + offset.x, offset.y, player.position.z + offset.z);
     }
 }

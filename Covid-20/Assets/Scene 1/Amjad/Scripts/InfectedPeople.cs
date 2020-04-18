@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
-using UnityEngine.AI; 
+using UnityEngine.AI;
 
 public class InfectedPeople : MonoBehaviour
 {
 
     public float patrolTime = 15;
     public float aggroRange = 10;
-    public Transform[] waypoints; 
+    public Transform[] waypoints;
+    [SerializeField] int m_NumOfPoints = 3;
 
     int index;
-    float speed, agentSpeed; 
+    float speed, agentSpeed;
 
-    Animator animator; 
-    NavMeshAgent agent; 
+    Animator animator;
+    NavMeshAgent agent;
     Transform player;
 
-    private float movementSpeed ;
+    private float movementSpeed;
 
     private void Awake()
     {
@@ -24,26 +25,43 @@ public class InfectedPeople : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         if (agent != null) { agentSpeed = agent.speed; }
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        index = Random.Range(0, waypoints.Length);
+        //index = Random.Range(0, waypoints.Length);
         movementSpeed = Random.Range(15, 18);
 
         InvokeRepeating("Tick", 0, 0.5f);
+
+        //Shuffle(waypoints);
 
         if (waypoints.Length > 0)
         {
             InvokeRepeating("Patrol", Random.Range(0, patrolTime), patrolTime);
         }
     }
+    public static void Shuffle<T>(T[] array)
+    {
+        System.Random rng = new System.Random();
+
+        int n = array.Length;
+        while (n > 1)
+        {
+            int k = rng.Next(n--);
+            T temp = array[n];
+            array[n] = array[k];
+            array[k] = temp;
+        }
+    }
 
     void Update()
     {
-        if(animator)
-            animator.SetFloat("Speed", agent.velocity.magnitude);
+        //if(animator)
+        //    animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 
     void Patrol()
     {
-        index = index == waypoints.Length - 1 ? 0 : index + 1;
+        //System.Random rng = new System.Random();
+        index = Random.Range(0, waypoints.Length);
+        //index = index == m_NumOfPoints - 1 ? 0 : index + 1;
     }
 
     void Tick()

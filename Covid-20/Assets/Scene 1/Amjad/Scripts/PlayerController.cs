@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController m_PlayerController;
 
     public float movementSpeed = 1.0f;
     public float gravity = 10.0f;
@@ -12,6 +13,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody m_RigidBody;
 
     Vector3 Mov;
+
+    [HideInInspector]
+    public Animator m_Animator;
 
     #region Khalid
     [Range(0, 1)]
@@ -23,12 +27,12 @@ public class PlayerController : MonoBehaviour
     float invulnerabilityTime = 10.0f;
     [SerializeField]
     float infectionRateIncrease = 0.5f;
-//    [SerializeField]
-//    float infectionRateDecrease = 0.0f;
+    //    [SerializeField]
+    //    float infectionRateDecrease = 0.0f;
 
-//    float infection; 
+    //    float infection; 
     float health = 100.0f;
- //   float resistance = 100.0f;
+    //   float resistance = 100.0f;
     float timePassed = 0.0f;
 
     bool isInvulnerable = false;
@@ -36,8 +40,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-//        infection = infectionRateIncrease - infectionRateDecrease; 
+        //infection = infectionRateIncrease - infectionRateDecrease; 
         m_RigidBody = GetComponent<Rigidbody>();
+        m_Animator = GetComponent<Animator>();
     }
 
 
@@ -47,17 +52,47 @@ public class PlayerController : MonoBehaviour
 
         Mov.z = Input.GetAxis("Vertical") * movementSpeed;
 
-        transform.Translate(Mov * Time.deltaTime);
+        //transform.Translate(Mov * Time.deltaTime, Space.World);
+        m_RigidBody.velocity = Mov;
+
+        if (Mov != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Mov), .15f);
+        }
+
+        if (PackageAttachment.PgAttachment.stillAttached == true)
+        {
+            m_Animator.SetBool("MoveHolding", true);
+            m_Animator.SetBool("Walking", false);
+        }
+
+        else if (PackageAttachment.PgAttachment.stillAttached == false)
+        {
+            m_Animator.SetBool("MoveHolding", false);
+        }
+
+        if ((Mov.x != 0 || Mov.z != 0) && PackageAttachment.PgAttachment.stillAttached == false)
+        {
+            m_Animator.SetBool("Walking", true);
+            Debug.Log("it is working");
+        }
+
+        else
+        {
+            m_Animator.SetBool("Walking", false);
+        }
+
+
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.transform.tag == "Infected")
+        if (other.transform.tag == "Infected")
         {
             health -= infectionRateIncrease;
             if (health <= 0)
-                GameManager.gm.Lose();  
-            GameManager.gm.UpdateSLiderValue(health); 
+                GameManager.gm.Lose();
+            GameManager.gm.UpdateSLiderValue(health);
         }
     }
 
@@ -86,8 +121,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SpeedingUp()
     {
-        float speed = movementSpeed; 
-        movementSpeed *= (speedUpRate + 1.0f) ;
+        float speed = movementSpeed;
+        movementSpeed *= (speedUpRate + 1.0f);
 
         //if (backgroundMusic)
         //    backgroundMusic.pitch = 1.25f;
@@ -100,7 +135,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-       movementSpeed = speed;
+        movementSpeed = speed;
 
         //if (backgroundMusic)
         //    backgroundMusic.pitch = 1f;
