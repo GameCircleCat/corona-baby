@@ -17,6 +17,13 @@ public class InfectedPeople : MonoBehaviour
     Vector3 m_TargetLastPos;
     [SerializeField] float m_AgroDisctance = 15.0f;
 
+<<<<<<< HEAD
+=======
+    public float patrolTime = 15;
+    public float aggroRange = 10;
+    public Transform[] waypoints;
+    [SerializeField] int m_NumOfPoints = 3;
+>>>>>>> Scene-1-Enhancements
 
 
     Animator animator;
@@ -27,8 +34,24 @@ public class InfectedPeople : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+<<<<<<< HEAD
         m_Eye = transform.Find("Eye");
         m_TargetLastPos = transform.position;
+=======
+        if (agent != null) { agentSpeed = agent.speed; }
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //index = Random.Range(0, waypoints.Length);
+        movementSpeed = Random.Range(15, 18);
+
+        InvokeRepeating("Tick", 0, 0.5f);
+
+        //Shuffle(waypoints);
+
+        if (waypoints.Length > 0)
+        {
+            InvokeRepeating("Patrol", Random.Range(0, patrolTime), patrolTime);
+        }
+>>>>>>> Scene-1-Enhancements
     }
     bool CheckTarget()
     {
@@ -124,9 +147,15 @@ public class InfectedPeople : MonoBehaviour
     }
     void Patrol()
     {
+<<<<<<< HEAD
         //index = Random.Range(0, waypoints.Length);
 
         //index = index == m_NumOfPOints - 1 ? 0 : index + 1;
+=======
+        //System.Random rng = new System.Random();
+        index = Random.Range(0, waypoints.Length);
+        //index = index == m_NumOfPoints - 1 ? 0 : index + 1;
+>>>>>>> Scene-1-Enhancements
     }
 
     void Tick()
