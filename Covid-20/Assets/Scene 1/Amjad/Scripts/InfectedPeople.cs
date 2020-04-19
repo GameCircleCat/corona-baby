@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,8 +27,10 @@ public class InfectedPeople : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
         m_Eye = transform.Find("Eye");
         m_TargetLastPos = transform.position;
+
     }
     bool CheckTarget()
     {
@@ -124,9 +126,11 @@ public class InfectedPeople : MonoBehaviour
     }
     void Patrol()
     {
+
         //index = Random.Range(0, waypoints.Length);
 
         //index = index == m_NumOfPOints - 1 ? 0 : index + 1;
+
     }
 
     void Tick()

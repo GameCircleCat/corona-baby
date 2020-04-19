@@ -6,6 +6,8 @@ public class PackageAttachment : MonoBehaviour
 {
     public static PackageAttachment PgAttachment;
 
+    Rigidbody m_RigidBody;
+
     public Transform player;
     public Transform Holder;
 
@@ -20,16 +22,18 @@ public class PackageAttachment : MonoBehaviour
         {
             PgAttachment = this;
         }
+
+        m_RigidBody = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             this.transform.parent = null;
-            this.GetComponent<Rigidbody>().useGravity = true;
+            //this.GetComponent<Rigidbody>().isKinematic = false;
             stillAttached = false;
-        }
+        }*/
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,13 +45,14 @@ public class PackageAttachment : MonoBehaviour
             UIManager.UIMgr.FirstMissionDoneUI.SetActive(true);
             GotAttached = true;
             stillAttached = true;
-            this.GetComponent<Rigidbody>().useGravity = false;
+            m_RigidBody.constraints = RigidbodyConstraints.FreezeAll;
+            this.transform.rotation = Quaternion.Euler(0 , 180 , 0);
         }
 
         else if (collision.transform.tag == "Infected")
         {
             this.transform.parent = null;
-            this.GetComponent<Rigidbody>().useGravity = true;
+            m_RigidBody.constraints = RigidbodyConstraints.None;
             stillAttached = false;
         }
     }
