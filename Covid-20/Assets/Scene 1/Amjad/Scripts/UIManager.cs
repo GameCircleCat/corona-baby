@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
     public Transform Hospital;
     public Transform package;
     public GameObject UIGamePaused;
+    public GameObject UIWinMessage;
+    public GameObject UILoseMessage;
 
     void Start()
     {

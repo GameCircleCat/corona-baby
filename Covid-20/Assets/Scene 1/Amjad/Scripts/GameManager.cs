@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     #region Khalid 
     public void Lose()
     {
+        UIManager.UIMgr.UILoseMessage.SetActive(true); // this brings up the pause UI
+        Time.timeScale = 0f; // this pauses the game action
         Debug.Log("You Lost");
     }
 

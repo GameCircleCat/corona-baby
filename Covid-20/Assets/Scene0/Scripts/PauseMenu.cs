@@ -8,4 +8,8 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
     }
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
 }
