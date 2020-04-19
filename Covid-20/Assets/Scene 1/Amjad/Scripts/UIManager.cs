@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class UIManager : MonoBehaviour
     public GameObject SecondMissionDoneUI;
     public GameObject UI_PopUp;
 
-    Color orange = new Color(1f, 0.64f, 0f);
+    Color orange = new Color(1f, 0.66f, 0.11f);
+    Color green = new Color(0f, .63f, .31f);
+    Color yellow = new Color(1, .82f, 0);
 
     [Header("GameObjects")]
     public Transform Player;
@@ -41,17 +44,17 @@ public class UIManager : MonoBehaviour
         // controlling Health bar color 
         if (sliderFill > 75)
         {
-            fill.color = Color.green;
+            fill.color = green;
         }
 
         else if (sliderFill > 50 && sliderFill < 75)
         {
-            fill.color = Color.Lerp(Color.green, Color.yellow, 1);
+            fill.color = Color.Lerp(green, yellow, 1);
         }
 
         else if (sliderFill > 25 && sliderFill < 50)
         {
-            fill.color = Color.Lerp(Color.yellow, orange, 1);
+            fill.color = Color.Lerp(yellow, orange, 1);
         }
 
         else if (sliderFill < 25)
@@ -75,6 +78,7 @@ public class UIManager : MonoBehaviour
             {
                 UIManager.UIMgr.SecondMissionDoneUI.SetActive(true);
                 // go to the next scene
+                Invoke("LoadScene2", 1);
             }
         }
 
@@ -84,6 +88,11 @@ public class UIManager : MonoBehaviour
     private void PopUp()
     {
         UI_PopUp.SetActive(true);
+    }
+
+    void LoadScene2()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

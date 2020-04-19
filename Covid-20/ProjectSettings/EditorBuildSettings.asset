@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scene0/Scenes/Main Menu.unity
     guid: fda8dc90bd375e247b520083f2e8e7fd
-  - enabled: 0
- Scene-1-Enhancements
+  - enabled: 1
     path: Assets/Cutscenes/First Cutcsene.unity
     guid: 4f3638038201924418073e015c2cbff2
   - enabled: 1
     path: Assets/Scene 1/Amjad/Scene 1.unity
     guid: 866b525bf8e11274ea80194bd4fe0fc1
-
-  - enabled: 0
- Scene-1-Enhancements
+  - enabled: 1
+    path: Assets/Cutscenes/Second Cutscene.unity
+    guid: 64ad4e37c82c54e4699d0e2459eb324a
+  - enabled: 1
     path: Assets/scene-2-hospital/scenes/Hospital.unity
     guid: 6f8ebb675110cf94c828d056a1e0a952
   m_configObjects: {}

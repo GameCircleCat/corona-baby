@@ -903,6 +903,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
+    - target: {fileID: 4206046572550810128, guid: ad36c73aa9a61cd498f534a2adff1e30,
+        type: 3}
+      propertyPath: m_Name
+      value: Difficulty System
+      objectReference: {fileID: 0}
     - target: {fileID: 4334033503135176208, guid: ad36c73aa9a61cd498f534a2adff1e30,
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
@@ -1171,7 +1176,7 @@ PrefabInstance:
     - target: {fileID: 4971032601562956835, guid: ad36c73aa9a61cd498f534a2adff1e30,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4971032601562956835, guid: ad36c73aa9a61cd498f534a2adff1e30,
         type: 3}
@@ -1208,6 +1213,11 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4282936996
       objectReference: {fileID: 0}
+    - target: {fileID: 4971032601562956835, guid: ad36c73aa9a61cd498f534a2adff1e30,
+        type: 3}
+      propertyPath: m_text
+      value: Difficulty
+      objectReference: {fileID: 0}
     - target: {fileID: 5383604275917782327, guid: ad36c73aa9a61cd498f534a2adff1e30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1217,6 +1227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -242
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621310907759961954, guid: ad36c73aa9a61cd498f534a2adff1e30,
+        type: 3}
+      propertyPath: m_Name
+      value: Difficulty Text
       objectReference: {fileID: 0}
     - target: {fileID: 6048788073839809811, guid: ad36c73aa9a61cd498f534a2adff1e30,
         type: 3}

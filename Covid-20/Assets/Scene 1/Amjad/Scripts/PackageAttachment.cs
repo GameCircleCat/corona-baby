@@ -11,7 +11,7 @@ public class PackageAttachment : MonoBehaviour
     public Transform player;
     public Transform Holder;
 
-    [SerializeField]
+    [HideInInspector]
     public bool GotAttached = false;
     public bool stillAttached = false;
 
