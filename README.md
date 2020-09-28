@@ -4,8 +4,7 @@
 # Gameplay
 
 ## Intro Video
-[![Alt text](<Preview/intro.jpg>)](<
-https://www.youtube.com/watch?v=jcmOaRar9a0&feature=youtu.be> "Click to play")
+[![Alt text](<Preview/intro.jpg>)](https://www.youtube.com/watch?v=jcmOaRar9a0&feature=youtu.be "Click to play")
 
 ## Snapshots
 
