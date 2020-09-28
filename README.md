@@ -1,6 +1,6 @@
 # corona-baby
 # Covid-20
-    A game with multiple minigames towards one goal of stopping the virus spread on Mars.
+    A game with multiple minigames towards the one goal of stopping the virus spread on Mars.
 # Gameplay
 
 ## Intro Video
